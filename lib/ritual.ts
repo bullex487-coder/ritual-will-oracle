@@ -2,6 +2,16 @@
 // Ethers.js connector for the Ritual Testnet blockchain.
 // Handles wallet connection, network switching, and contract interaction.
 
+declare global {
+  interface Window {
+    ethereum?: {
+      request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
+      on: (event: string, handler: (...args: unknown[]) => void) => void;
+      removeListener: (event: string, handler: (...args: unknown[]) => void) => void;
+    };
+  }
+}
+
 import { ethers } from "ethers";
 import type { WalletState, StoreResult, OnChainPrediction, MarketCategory } from "@/types";
 
