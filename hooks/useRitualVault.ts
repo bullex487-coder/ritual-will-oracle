@@ -1,7 +1,6 @@
 // hooks/useRitualVault.ts
 // Hook for MetaMask wallet connection and Ritual blockchain interaction.
 // Handles wallet state, network switching, and on-chain prediction storage.
-
 declare global {
   interface Window {
     ethereum?: {
@@ -76,7 +75,7 @@ export function useRitualVault() {
 
     try {
       // Request account access (triggers MetaMask popup)
-await window.ethereum.request({ method: "eth_requestAccounts" }) as string[];
+      await window.ethereum.request({ method: "eth_requestAccounts" });
       await refreshWalletState();
       return true;
     } catch (err: unknown) {

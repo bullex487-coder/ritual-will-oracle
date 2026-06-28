@@ -118,9 +118,12 @@ export async function getWalletState(): Promise<WalletState> {
   }
 
   try {
-const accounts = await window.ethereum.request({
-  method: "eth_accounts",
-}) as string[];
+    const provider = getBrowserProvider();
+
+    const accounts = await window.ethereum.request({
+      method: "eth_accounts",
+    }) as string[];
+
     const address = accounts[0] ?? null;
 
     if (!address) {
