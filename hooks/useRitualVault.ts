@@ -76,7 +76,7 @@ export function useRitualVault() {
 
     try {
       // Request account access (triggers MetaMask popup)
-      await window.ethereum.request({ method: "eth_requestAccounts" });
+await window.ethereum.request({ method: "eth_requestAccounts" }) as string[];
       await refreshWalletState();
       return true;
     } catch (err: unknown) {
